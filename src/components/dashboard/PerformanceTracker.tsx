@@ -149,3 +149,4 @@ export function PerformanceTracker({ initialScores, onScoresChange }: { initialS
     </motion.div>
   )
 }
+// Score buffer capped at 5 per PRD §05
