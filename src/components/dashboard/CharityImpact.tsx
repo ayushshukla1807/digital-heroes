@@ -19,7 +19,7 @@ export function CharityImpact({ charityName, initialPercent }: { charityName: st
       <div className="flex justify-between items-start mb-6 border-b border-[var(--color-border)] pb-6 relative z-10">
         <div>
           <h2 className="text-xl font-display font-medium text-white tracking-tight flex items-center gap-2">
-            <Heart className="w-5 h-5 text-pink-500" /> Philanthropy Portfolio
+            <Heart className="w-5 h-5 text-pink-500" /> Charity Impact Portfolio
           </h2>
           <p className="text-xs text-[var(--color-text-muted)] mt-1 font-medium tracking-wide">Direct Allocation Management</p>
         </div>
