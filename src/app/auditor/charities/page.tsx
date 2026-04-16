@@ -94,3 +94,4 @@ export default function AuditorCharitiesPage() {
     </div>
   )
 }
+// Charity ledger — immutable fund allocation record
