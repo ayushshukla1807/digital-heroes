@@ -76,3 +76,4 @@ export const PAYPAL_PLAN_IDS: Record<string, Record<string, string>> = {
 
 
 
+// PayPal Subscription plan IDs — NEXT_PUBLIC_ prefix required for client access
