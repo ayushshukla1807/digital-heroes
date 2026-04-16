@@ -23,7 +23,7 @@ export default function AuditorOverviewPage() {
             <Eye className="w-3.5 h-3.5 text-amber-400" />
             <span className="text-[10px] font-semibold text-amber-400 uppercase tracking-widest">Transparency Portal</span>
           </div>
-          <h1 className="text-3xl font-display font-medium text-white tracking-tight">Financial Overview</h1>
+          <h1 className="text-3xl font-display font-medium text-white tracking-tight">Revenue Overview</h1>
           <p className="text-sm text-[var(--color-text-secondary)] font-light mt-1">Full read-only view of platform financials. No PII exposed.</p>
         </div>
         <div className="text-xs font-medium text-[var(--color-text-muted)] bg-white/[0.02] border border-[var(--color-border)] rounded-lg px-4 py-2">
