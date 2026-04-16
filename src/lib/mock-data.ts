@@ -1,6 +1,6 @@
 export const MOCK_USER = {
   name: "John Doe",
-  email: "user@test.com",
+  email: "demo@digitalheroesclub.in",
   subscription: { status: "active", plan: "pro", renewal_date: "2026-05-01" },
   scores: [
     { id: 1, date: "2026-04-14", score: 34 },
