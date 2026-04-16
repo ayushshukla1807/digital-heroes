@@ -116,7 +116,7 @@ export default function CheckoutPage() {
                   {cycle}
                   {cycle === "yearly" && (
                     <Badge variant="glass" className="ml-2 bg-[var(--color-primary)]/20 text-[var(--color-primary)] text-[10px] py-0 border-0 absolute -top-3 -right-3 px-2">
-                      Save 20%
+                      Save 17%
                     </Badge>
                   )}
                 </button>
