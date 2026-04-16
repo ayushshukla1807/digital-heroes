@@ -66,7 +66,7 @@ export function PerformanceTracker({ initialScores, onScoresChange }: { initialS
           <p className="text-xs text-[var(--color-text-muted)] mt-1 font-medium tracking-wide">Rolling 5-Score Buffer · Stableford Format · Range: 1–45</p>
         </div>
         <div className="text-right">
-          <p className="text-3xl font-display font-semibold text-white tracking-tight">{avgScore} <span className="text-sm text-[var(--color-text-muted)] font-medium">Avg</span></p>
+          <p className="text-3xl font-display font-bold text-white tracking-tight">{avgScore} <span className="text-sm text-[var(--color-text-muted)] font-medium">Avg</span></p>
           <p className="text-[10px] text-[var(--color-text-muted)] mt-1">{scores.length}/5 entries</p>
         </div>
       </div>
