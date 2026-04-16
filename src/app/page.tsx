@@ -146,7 +146,7 @@ export default function Home() {
                 <Heart className="w-7 h-7 text-[var(--color-primary)] fill-[var(--color-primary)]" />
               </div>
               <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight mb-6">Redefine your legacy.</h2>
-              <p className="text-[var(--color-text-secondary)] text-lg mb-10 max-w-md mx-auto font-light">₹749/month. Cancel anytime. The platform that rewards performance while funding global change.</p>
+              <p className="text-[var(--color-text-secondary)] text-lg mb-10 max-w-md mx-auto font-light">₹749/month. No lock-in. Cancel anytime. The platform that rewards performance while funding global change.</p>
               <Link href="/signup">
                 <Button className="h-14 px-12 text-sm font-semibold rounded-xl bg-white text-[#020617] hover:bg-gray-200 transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                   Create Your Account <ArrowRight className="ml-2 w-4 h-4" />
