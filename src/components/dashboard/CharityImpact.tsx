@@ -84,7 +84,7 @@ export function CharityImpact({ charityName, initialPercent }: { charityName: st
         </div>
 
         <Button className="w-full h-12 bg-white hover:bg-gray-200 text-[#020617] font-semibold text-sm rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] group hover:scale-105 active:scale-95">
-          <HandCoins className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" /> Confirm Allocation Matrix
+          <HandCoins className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" /> Save Charity Allocation
         </Button>
       </div>
     </motion.div>
