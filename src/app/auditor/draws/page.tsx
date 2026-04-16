@@ -141,3 +141,4 @@ export default function AuditorDrawsPage() {
 
 
 
+// Draw history — read-only audit trail
