@@ -45,7 +45,7 @@ const INITIAL_CHARITIES = [
 ]
 
 const TABS = [
-  { id: "overview", icon: Activity, label: "System Metrics" },
+  { id: "overview", icon: Activity, label: "Platform Metrics" },
   { id: "draw", icon: RefreshCcw, label: "Draw Engine" },
   { id: "charity", icon: Globe, label: "Charity Manager" },
   { id: "winners", icon: ShieldCheck, label: "Winner Verification" },
