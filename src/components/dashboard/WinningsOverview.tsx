@@ -37,3 +37,4 @@ export function WinningsOverview({ totalWon, paymentStatus }: { totalWon: number
     </motion.div>
   )
 }
+
