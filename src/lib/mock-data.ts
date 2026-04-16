@@ -1,5 +1,5 @@
 export const MOCK_USER = {
-  name: "Ayush Shukla",
+  name: "John Doe",
   email: "user@test.com",
   subscription: { status: "active", plan: "pro", renewal_date: "2026-05-01" },
   scores: [
