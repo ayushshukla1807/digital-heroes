@@ -13,7 +13,7 @@ export default function DashboardPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-display font-medium tracking-tight text-white">Welcome back, {user.name}</h1>
-        <p className="text-[var(--color-text-secondary)] mt-1 font-light">Here is your impact and performance overview.</p>
+        <p className="text-[var(--color-text-secondary)] mt-1 font-light">Track your scores, monitor draws, and manage your charity impact.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
