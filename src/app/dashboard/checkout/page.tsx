@@ -216,7 +216,7 @@ export default function CheckoutPage() {
               <div className="flex items-center justify-center gap-2 pt-2">
                 <ShieldCheck className="w-4 h-4 text-[var(--color-primary)]" />
                 <span className="text-[10px] font-medium text-[var(--color-text-muted)] uppercase tracking-wider">
-                  Secured by PayPal · 256-bit SSL
+                  256-bit SSL Encrypted · Powered by PayPal
                 </span>
               </div>
             </CardContent>
