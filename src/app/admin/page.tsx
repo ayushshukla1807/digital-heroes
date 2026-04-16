@@ -246,7 +246,7 @@ export default function AdminDashboard() {
                     {simulating ? (
                       <><span className="animate-spin mr-3"><RefreshCcw className="w-5 h-5" /></span>Simulating Draw...</>
                     ) : (
-                      <>Run Simulation <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" /></>
+                      <>Simulate / Pre-Analysis <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" /></>
                     )}
                   </Button>
                   {drawResults.length === 5 && !simulating && (
