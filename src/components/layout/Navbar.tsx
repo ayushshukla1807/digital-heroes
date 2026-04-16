@@ -13,7 +13,7 @@ export function Navbar() {
             <Hexagon className="h-8 w-8 text-[var(--color-primary)] stroke-[1.5] group-hover:rotate-12 transition-transform duration-500 ease-out" />
             <div className="absolute inset-0 bg-[var(--color-primary)]/20 blur-md rounded-full group-hover:bg-[var(--color-primary)]/40 transition-colors duration-500"></div>
           </div>
-          <span className="font-display font-medium text-xl tracking-tight text-white">🏌️ Digital Heroes</span>
+          <span className="font-display font-medium text-xl tracking-tight text-white">Digital Heroes</span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <Link href="/charities" className="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors">
