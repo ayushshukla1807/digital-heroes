@@ -88,7 +88,7 @@ export function PerformanceTracker({ initialScores, onScoresChange }: { initialS
           </ResponsiveContainer>
         ) : (
           <div className="flex items-center justify-center h-full text-[var(--color-text-muted)] text-xs font-medium">
-            <Activity className="w-4 h-4 mr-2" /> Add 2 or more scores to view trend
+            <Activity className="w-4 h-4 mr-2" /> Add at least 2 scores to visualise trend
           </div>
         )}
       </div>
