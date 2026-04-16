@@ -34,7 +34,7 @@ export default function CharitiesPage() {
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-medium text-white tracking-tight mb-4">Impact Partners</h1>
           <p className="text-lg text-[var(--color-text-secondary)] font-light max-w-xl mx-auto">
-            Every subscription allocation flows directly to these verified organizations. Transparent, traceable, real.
+            Every subscription allocation flows directly to these verified organizations. Transparent, traceable, and verified.
           </p>
         </motion.div>
 
