@@ -61,7 +61,7 @@ export function PerformanceTracker({ initialScores, onScoresChange }: { initialS
       <div className="flex justify-between items-start mb-6">
         <div>
           <h2 className="text-xl font-display font-medium text-white flex items-center gap-2 tracking-tight">
-            <Target className="w-5 h-5 text-[var(--color-primary)]" /> Golf Score Tracker
+            <Target className="w-5 h-5 text-[var(--color-primary)]" /> Stableford Score Tracker
           </h2>
           <p className="text-xs text-[var(--color-text-muted)] mt-1 font-medium tracking-wide">Rolling 5-Score Buffer · Stableford Format · Range: 1–45</p>
         </div>
