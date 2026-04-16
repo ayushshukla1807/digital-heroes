@@ -125,7 +125,7 @@ export default function AdminDashboard() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div>
           <h1 className="text-3xl font-display font-medium text-white tracking-tight mb-2">Admin Terminal</h1>
-          <p className="text-sm text-[var(--color-text-secondary)] font-medium tracking-wide">Manage users, draws, charities, and winner verification.</p>
+          <p className="text-sm text-[var(--color-text-secondary)] font-medium tracking-wide">Full platform control — users, draws, charities, winners, analytics.</p>
         </div>
         <div className="flex gap-1.5 bg-white/[0.02] p-1.5 rounded-xl border border-[var(--color-border)] w-full md:w-auto overflow-x-auto shadow-inner">
           {TABS.map(tab => (
