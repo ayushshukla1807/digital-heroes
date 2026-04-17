@@ -75,7 +75,7 @@ export default function CharitiesPage() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
             <Globe className="w-12 h-12 text-[var(--color-text-muted)] mx-auto mb-4" />
             <p className="text-white font-display font-medium text-xl mb-2">No charities found</p>
-            <p className="text-[var(--color-text-secondary)] text-sm">Try a different search term or category filter.</p>
+            <p className="text-[var(--color-text-secondary)] text-sm">Adjust your search or try a different category.</p>
           </motion.div>
         ) : (
           <div className="grid md:grid-cols-2 gap-6">
