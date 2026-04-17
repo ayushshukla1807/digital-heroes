@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster'
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
 export const metadata: Metadata = {
-  title: 'Digital Heroes | Play. Track. Impact.',
+  title: 'Digital Heroes — Play. Track. Impact.',
   description: 'A platform combining golf performance tracking and monthly charity prize draws.',
 }
 
