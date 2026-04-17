@@ -440,7 +440,7 @@ export default function AdminDashboard() {
             <h2 className="font-display font-medium text-white tracking-tight text-2xl">Reports & Analytics</h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { label: "Total Users", value: "1,240", sub: "+38 this week", color: "text-[var(--color-primary)]" },
+                { label: "Total Users", value: "1,287", sub: "+38 this week", color: "text-[var(--color-primary)]" },
                 { label: "Total Prize Pool", value: "₹30,40,000", sub: "All-time distributed", color: "text-[var(--color-accent)]" },
                 { label: "Charity Contributions", value: "₹11,10,000", sub: "Across 4 partners", color: "text-pink-400" },
                 { label: "Draws Executed", value: "3", sub: "Monthly cadence", color: "text-blue-400" },
