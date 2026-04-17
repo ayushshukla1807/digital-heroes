@@ -101,7 +101,7 @@ export function PerformanceTracker({ initialScores, onScoresChange }: { initialS
         <div className="w-px bg-white/10 my-2" />
         <div className="w-24 relative">
           <TrendingUp className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)]" />
-          <Input type="number" placeholder="1–45" min="1" max="45" value={newScore} onChange={e => setNewScore(e.target.value)} className="w-full pl-8 bg-transparent border-none font-display font-medium text-sm text-[var(--color-primary)] h-10 shadow-none focus-visible:ring-0 placeholder:text-gray-600" />
+          <Input type="number" placeholder="Score (1-45)" min="1" max="45" value={newScore} onChange={e => setNewScore(e.target.value)} className="w-full pl-8 bg-transparent border-none font-display font-medium text-sm text-[var(--color-primary)] h-10 shadow-none focus-visible:ring-0 placeholder:text-gray-600" />
         </div>
         <Button type="submit" size="icon" className="shrink-0 h-10 w-10 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white rounded-lg transition-transform hover:scale-105 active:scale-95 shadow-[0_4px_14px_rgba(16,185,129,0.3)]">
           <Plus className="w-5 h-5" />
