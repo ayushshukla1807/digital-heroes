@@ -127,7 +127,7 @@ export function PerformanceTracker({ initialScores, onScoresChange }: { initialS
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.8, y: -20 }}
                     key={s.id}
-                    className="bg-gradient-to-b from-white/[0.05] to-transparent border border-white/10 rounded-xl p-2 flex flex-col items-center justify-center h-20 relative overflow-hidden group/card"
+                    className="bg-gradient-to-b from-white/[0.06] to-transparent border border-white/10 rounded-xl p-2 flex flex-col items-center justify-center h-20 relative overflow-hidden group/card"
                   >
                     {idx === 0 && <div className="absolute top-0 left-0 w-full h-0.5 bg-[var(--color-accent)] shadow-[0_0_8px_var(--color-accent)]" />}
                     <span className="font-display font-semibold text-lg text-white mb-0.5 group-hover/card:scale-110 transition-transform cursor-default">{s.score}</span>
