@@ -74,3 +74,4 @@ export default function AuditorLayout({ children }: { children: React.ReactNode 
     </div>
   )
 }
+// Auditor portal — read-only, no mutations permitted
