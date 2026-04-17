@@ -85,7 +85,7 @@ export function WinnerProofUpload({ drawDate, prizeAmount }: { drawDate: string;
                 <>
                   <Upload className="w-8 h-8 text-[var(--color-text-muted)] mx-auto mb-3" />
                   <p className="text-sm font-medium text-white mb-1">Upload screenshot of your golf scores</p>
-                  <p className="text-xs text-[var(--color-text-muted)]">Drag & drop or click to browse · PNG, JPG accepted</p>
+                  <p className="text-xs text-[var(--color-text-muted)]">Click to browse or drag & drop · PNG, JPG accepted</p>
                 </>
               )}
             </div>
