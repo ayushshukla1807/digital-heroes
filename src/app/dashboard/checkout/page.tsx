@@ -29,7 +29,7 @@ const PLANS = [
   {
     id: "basic",
     name: "Hobbyist",
-    description: "For recreational golfers tracking their game",
+    description: "Perfect for occasional players",
     monthlyPrice: 749,
     yearlyPrice: 7499,
     features: ["1 Draw Entry / Month", "Track 5 Scores", "Basic Charity Selection", "Standard Support"],
