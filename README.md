@@ -215,3 +215,16 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 | User | user@test.com | Test@1234 |
 | Admin | admin@test.com | Admin@1234 |
 | Auditor | auditor@test.com | Audit@1234 |
+
+---
+
+## Changelog
+
+| Version | Date | Notes |
+|---|---|---|
+| v1.0.0 | Apr 16, 2026 | Initial build — homepage, auth, dashboard scaffold |
+| v1.1.0 | Apr 16, 2026 | PayPal integration, webhook handler, checkout flow |
+| v1.2.0 | Apr 17, 2026 | Admin draw engine, winner verification, charity CRUD |
+| v1.3.0 | Apr 17, 2026 | Auditor transparency portal, draw history, charity ledger |
+| v1.4.0 | Apr 17, 2026 | Score validation (Stableford 1–45, duplicate date guard) |
+| v1.5.0 | Apr 18, 2026 | INR currency conversion, charity search/filter, final polish |
