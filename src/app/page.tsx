@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { Typewriter } from '@/components/ui/Typewriter'
 import { Marquee } from '@/components/ui/Marquee'
+import { Meteors } from '@/components/ui/Meteors'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { ArrowRight, Heart, Trophy, TrendingUp, Users, ShieldCheck, ChevronRight, Zap, Globe, Lock, Star } from 'lucide-react'
 import Link from 'next/link'
@@ -101,6 +102,7 @@ export default function Home() {
         <section className="relative px-6 pt-28 pb-32 overflow-hidden min-h-[95vh] flex flex-col justify-center">
           {/* Grid background */}
           <div className="absolute inset-0 pointer-events-none">
+            <Meteors number={20} />
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:60px_60px]" />
             <div className="absolute left-1/4 top-1/4 w-96 h-96 bg-[var(--color-accent)] rounded-full blur-[180px] opacity-[0.04]" />
             <div className="absolute right-1/4 bottom-1/4 w-96 h-96 bg-[var(--color-primary)] rounded-full blur-[180px] opacity-[0.06]" />
