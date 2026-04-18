@@ -1,6 +1,6 @@
 # Digital Heroes — Full Stack Intern Assignment
 
-> **Live URL:** https://digital-heroes-umber.vercel.app
+> **Live URL:** https://digital-heroes-topaz.vercel.app
 > **Role Applied:** Full Stack Intern · Digital Heroes
 > **Submitted by:** Ayush Shukla
 
@@ -8,7 +8,12 @@
 
 ## Assignment Overview
 
-Built a fully functional, production-deployed web application from scratch based on the provided PRD. The platform combines golf performance tracking, a monthly draw engine, PayPal subscription billing, and a charitable giving model — all within a premium dark-mode UI.
+Built a fully functional, production-deployed web application from scratch based on the provided PRD. The platform combines golf performance tracking, a monthly draw engine, PayPal subscription billing, and a charitable giving model.
+
+**What makes this submission different?**
+- **Brand Match:** Tailored entirely to the Digital Heroes brand using your exact cyan (`#06b6d4`), Space Grotesk typography, and "Orbital" copy language.
+- **Evaluator Access Panel:** A custom-engineered floating panel that gives the evaluator instant, one-click access and copying to the 3 required roles.
+- **Lucknow Heritage:** Honoring the fact that Digital Heroes is a Lucknow-born company, built by a candidate from the same city.
 
 ---
 
@@ -95,10 +100,10 @@ Full capabilities across 5 tabs:
 - Reports & Analytics (users, prize pools, charity distribution, draw history table)
 
 ### §12 — UI/UX
-- Design deliberately avoids golf clichés — no fairways, plaid, or club imagery
-- Emotion-driven: glassmorphism dark UI with emerald + amber accent system
-- Micro-animations: draw slot machine, chart reveals, framer-motion transitions
-- Subscribe CTA prominent on homepage, checkout, and login sidebar
+- Brand synchronized: Uses Digital Heroes custom `#06b6d4` cyan, Space Grotesk fonts, and space/orbit imagery matching the main digitalheroes.co.in site.
+- Emotion-driven: glassmorphism dark UI with cyan + amber accent system
+- Micro-animations: draw slot machine, live ticker, chart reveals, framer-motion transitions
+- Frictionless Evaluation: Floating Evaluator Access Panel globally injected for instant role-switching.
 
 ### §13 — Technical
 - Mobile-first responsive layout (`sm:`, `md:`, `lg:` breakpoints throughout)
