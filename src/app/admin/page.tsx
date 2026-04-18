@@ -1,10 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useSearchParams, useRouter } from "next/navigation"
 import {
   Users, DollarSign, CheckCircle, Activity, AlertCircle,
   Clock, ShieldCheck, RefreshCcw, Globe, Terminal, Heart,
@@ -52,8 +53,23 @@ const TABS = [
   { id: "analytics", icon: BarChart3, label: "Reports & Analytics" },
 ]
 
-export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState("overview")
+function AdminDashboardContent() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const tabFromUrl = searchParams.get("tab") || "overview"
+  
+  const [activeTab, setActiveTab] = useState(tabFromUrl)
+
+  // Sync state if URL changes (e.g. from sidebar clicks)
+  useEffect(() => {
+    setActiveTab(tabFromUrl)
+  }, [tabFromUrl])
+
+  const handleTabChange = (id: string) => {
+    setActiveTab(id)
+    router.push(`/admin?tab=${id}`, { scroll: false })
+  }
+
   const [simulating, setSimulating] = useState(false)
   const [drawResults, setDrawResults] = useState<number[]>([])
   const [spinValues, setSpinValues] = useState<number[]>([0, 0, 0, 0, 0])
@@ -131,7 +147,7 @@ export default function AdminDashboard() {
           {TABS.map(tab => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabChange(tab.id)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide whitespace-nowrap transition-all duration-200 ${
                 activeTab === tab.id
                   ? "bg-[var(--color-surface-elevated)] text-white shadow-[0_2px_10px_rgba(0,0,0,0.3)] border border-white/10"
@@ -537,5 +553,17 @@ export default function AdminDashboard() {
         )}
       </AnimatePresence>
     </div>
+  )
+}
+
+export default function AdminDashboard() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--color-primary)]"></div>
+      </div>
+    }>
+      <AdminDashboardContent />
+    </Suspense>
   )
 }
