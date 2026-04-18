@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Digital Heroes - Full Stack Assessment
 
-## Getting Started
+This is the assessment submission for the Full Stack Intern role at Digital Heroes. The project is an emotionally engaging, charity-driven platform that integrates golf performance tracking and monthly draw engine.
 
-First, run the development server:
+## 🏆 Key Features Implemented
+- **Premium Glassmorphism Design:** Beautiful dark UI with emerald/amber highlights, deviating from standard "golf" UI as requested.
+- **Animated Draw Engine:** Fully visual draw simulation for Admins utilizing `framer-motion`.
+- **Complete Dashboard Set:** Both user and admin panels are completely built out per PRD.
+- **Score constraints handled:** Unique per date and rolling 5 score limits.
+- **Charity integrations:** Slider and calculation visually represented in dashboard.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Deployment Credentials
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For the assessment reviewers, use the following credentials to access the panels:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Admin Access:** `admin@digitalheroes.demo` / `admin123`
+- **User Access:** `user@digitalheroes.demo` / `user123`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tech Stack
+- Next.js 14 App Router
+- Tailwind CSS v4
+- Supabase (Auth + PostgreSQL)
+- Framer Motion
 
-## Learn More
+## 📦 Deployment Instructions (For PRD Compliance)
+To deploy this codebase to a new Vercel and Supabase instance:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Supabase Setup:**
+   - Create a new Supabase project.
+   - Run the SQL scripts found in `supabase/migrations/` in the SQL editor.
+   - Run the `supabase/seed.sql` to populate default charities.
+2. **Vercel Setup:**
+   - Push this repo to GitHub.
+   - Create a new Vercel project and connect the repo.
+   - Add these environment variables in Vercel:
+     - `NEXT_PUBLIC_SUPABASE_URL`
+     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+     - `SUPABASE_SERVICE_ROLE_KEY`
+3. Hit Deploy!
