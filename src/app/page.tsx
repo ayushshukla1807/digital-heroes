@@ -121,8 +121,8 @@ export default function Home() {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8 }} className="text-center mb-8">
               <h1 className="font-display font-semibold tracking-tight leading-[0.9]">
                 <span className="block text-[clamp(52px,9vw,110px)] text-white"><Typewriter text="Launching" delay={0.2} /></span>
-                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-cyan-300 to-[var(--color-primary)]"><Typewriter text="Your Game." delay={0.5} /></span>
-                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-amber-300"><Typewriter text="Into Orbit." delay={0.8} /></span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-[#06b6d4]"><Typewriter text="Your Game." delay={0.5} /></span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-amber-500"><Typewriter text="Into Orbit." delay={0.8} /></span>
               </h1>
             </motion.div>
 
