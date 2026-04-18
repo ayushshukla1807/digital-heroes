@@ -11,7 +11,7 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div>
+      <div id="overview">
         <h1 className="text-3xl font-display font-medium tracking-tight text-white">Welcome back, {user.name}</h1>
         <p className="text-[var(--color-text-secondary)] mt-1 font-light">Your performance stats, charity impact, and draw participation — all in one place.</p>
       </div>
@@ -23,8 +23,12 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <PerformanceTracker initialScores={user.scores} />
-        <CharityImpact charityName={user.charity.name} initialPercent={user.charity.contribution_percent} />
+        <div id="ledger">
+          <PerformanceTracker initialScores={user.scores} />
+        </div>
+        <div id="allocations">
+          <CharityImpact charityName={user.charity.name} initialPercent={user.charity.contribution_percent} />
+        </div>
       </div>
 
       {user.winnings.total_won > 0 && (

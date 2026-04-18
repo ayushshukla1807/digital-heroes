@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation'
 const NAV_ITEMS = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Overview' },
   { href: '/dashboard/checkout', icon: CreditCard, label: 'Subscription' },
-  { href: '/dashboard', icon: Target, label: 'Ledger' },
-  { href: '/dashboard', icon: Trophy, label: 'Allocations' },
+  { href: '/dashboard#ledger', icon: Target, label: 'Ledger' },
+  { href: '/dashboard#allocations', icon: Trophy, label: 'Allocations' },
 ]
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -39,7 +39,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <nav className="flex-1 px-4 py-8 space-y-1">
           <p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider font-semibold px-3 mb-4">Portfolio Management</p>
           {NAV_ITEMS.map(({ href, icon: Icon, label }) => {
-            const isActive = pathname === href
+            const isActive = pathname === href.split('#')[0] && (href.includes('#') ? false : true)
             return (
               <Link key={label} href={href} className={`sidebar-link ${isActive ? 'active' : ''}`}>
                 <Icon className="w-4 h-4" />
@@ -58,7 +58,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <BarChart3 className="w-4 h-4" />
               Admin Terminal
             </Link>
-            <Link href="/dashboard" className="sidebar-link">
+            <Link href="/dashboard#overview" className="sidebar-link">
               <Settings className="w-4 h-4" />
               Settings
             </Link>
