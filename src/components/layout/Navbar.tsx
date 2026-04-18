@@ -1,9 +1,20 @@
 "use client"
 
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 
 export function Navbar() {
+  const [onlineUsers, setOnlineUsers] = useState(1243)
+
+  useEffect(() => {
+    // Simulate live fluctuating active users
+    const interval = setInterval(() => {
+      setOnlineUsers(prev => prev + Math.floor(Math.random() * 5) - 2)
+    }, 8000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <nav className="sticky top-[32px] z-40 w-full border-b border-[var(--color-border)] bg-[rgba(10,10,15,0.85)] backdrop-blur-2xl">
       <div className="container mx-auto flex h-[68px] items-center justify-between px-6">
@@ -23,7 +34,18 @@ export function Navbar() {
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        {/* Live Pulse */}
+        <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/10 bg-emerald-500/5 cursor-default group ml-8">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span className="text-[10px] font-medium text-emerald-400/80 group-hover:text-emerald-400 transition-colors">
+            {onlineUsers.toLocaleString()} Golfers Online
+          </span>
+        </div>
+
+        <div className="hidden md:flex items-center gap-8 ml-auto mr-8">
           <Link href="/charities" className="text-sm font-medium text-[var(--color-text-secondary)] hover:text-white transition-colors">
             Impact Partners
           </Link>
