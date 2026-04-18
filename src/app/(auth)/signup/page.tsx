@@ -33,19 +33,19 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center p-4 py-12 relative overflow-hidden bg-[var(--color-background)]">
-      <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-[var(--color-primary)]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-[var(--color-accent)]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-[#06b6d4]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="w-full max-w-md relative z-10">
-        <Link href="/" className="flex items-center gap-3 mb-10 justify-center">
-          <Hexagon className="h-7 w-7 text-[var(--color-primary)] stroke-[1.5]" />
+        <Link href="/" className="flex items-center gap-3 mb-10 justify-center group">
+          <Hexagon className="h-7 w-7 text-[#06b6d4] stroke-[1.5] group-hover:rotate-12 transition-transform duration-500" />
           <span className="font-display font-medium text-xl tracking-tight text-white">Digital Heroes</span>
         </Link>
 
         <div className="premium-card p-8 border-[var(--color-border)]">
           <div className="mb-8">
-            <h1 className="text-2xl font-display font-medium text-white tracking-tight mb-1">Initialize Portfolio</h1>
-            <p className="text-sm text-[var(--color-text-secondary)] font-light">Create your account and start competing.</p>
+            <h1 className="text-2xl font-display font-medium text-white tracking-tight mb-1">Launch Your Game</h1>
+            <p className="text-sm text-[var(--color-text-secondary)] font-light">Create your account and jump into orbit.</p>
           </div>
 
           <form onSubmit={handleSignup} className="space-y-5">
@@ -84,13 +84,13 @@ export default function SignupPage() {
                     onClick={() => setFormData(prev => ({ ...prev, charity_id: c.id }))}
                     className={`p-3 rounded-xl border text-left transition-all duration-200 ${
                       formData.charity_id === c.id
-                        ? "border-[var(--color-primary)] bg-[var(--color-primary)]/5"
+                        ? "border-[#06b6d4] bg-[#06b6d4]/5"
                         : "border-[var(--color-border)] bg-white/[0.01] hover:border-white/20"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
                       <div className="w-2 h-2 rounded-full" style={{ background: c.color }} />
-                      {formData.charity_id === c.id && <Check className="w-3 h-3 text-[var(--color-primary)]" />}
+                      {formData.charity_id === c.id && <Check className="w-3 h-3 text-[#06b6d4]" />}
                     </div>
                     <p className="text-[11px] font-semibold text-white leading-tight">{c.name}</p>
                   </button>
@@ -101,19 +101,19 @@ export default function SignupPage() {
             <Button
               type="submit"
               disabled={loading || !formData.charity_id}
-              className="w-full h-12 mt-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold text-sm rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all duration-300 disabled:opacity-50"
+              className="w-full h-12 mt-2 bg-[#06b6d4] hover:bg-[#0891b2] text-gray-900 font-semibold text-sm rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.2)] hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300 disabled:opacity-50"
             >
               {loading ? (
-                <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Creating Account...</>
+                <><Loader2 className="w-4 h-4 mr-2 animate-spin text-gray-900" /> Initializing...</>
               ) : (
-                <>Continue to Subscription <ArrowRight className="w-4 h-4 ml-2" /></>
+                <>Select Subscription <ArrowRight className="w-4 h-4 ml-2" /></>
               )}
             </Button>
           </form>
 
           <p className="mt-6 text-center text-sm text-[var(--color-text-secondary)] font-light">
             Already have an account?{" "}
-            <Link href="/login" className="text-[var(--color-primary)] font-semibold hover:underline underline-offset-2">Sign in</Link>
+            <Link href="/login" className="text-[#06b6d4] font-semibold hover:underline underline-offset-2">Sign in</Link>
           </p>
         </div>
       </motion.div>

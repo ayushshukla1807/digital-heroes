@@ -27,25 +27,25 @@ export default function LoginPage() {
       <div className="hidden lg:flex flex-col w-1/2 relative overflow-hidden p-16 justify-between border-r border-[var(--color-border)]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_30%,rgba(16,185,129,0.08)_0%,transparent_60%)] pointer-events-none" />
 
-        <Link href="/" className="flex items-center gap-3 relative z-10">
-          <Hexagon className="h-7 w-7 text-[var(--color-primary)] stroke-[1.5]" />
+        <Link href="/" className="flex items-center gap-3 relative z-10 group">
+          <Hexagon className="h-7 w-7 text-[#06b6d4] stroke-[1.5] group-hover:rotate-12 transition-transform duration-500" />
           <span className="font-display font-medium text-xl tracking-tight text-white">Digital Heroes</span>
         </Link>
 
         <div className="relative z-10 space-y-8">
           <div className="space-y-3">
-            <p className="text-xs font-semibold text-[var(--color-primary)] uppercase tracking-widest">Platform Snapshot</p>
+            <p className="text-xs font-semibold text-[#06b6d4] uppercase tracking-widest">Platform Snapshot</p>
             <blockquote className="text-3xl font-display font-medium text-white leading-tight tracking-tight">
-              "Every swing is a chance to win — and to give."
+              "Every swing is a chance to win — and to fund positive impact."
             </blockquote>
-            <p className="text-[var(--color-text-secondary)] font-light">Join 1,200+ golfers transforming their game into global impact.</p>
+            <p className="text-[var(--color-text-secondary)] font-light">Join 1,200+ players launching their game into orbit.</p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="premium-card p-5">
-              <p className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-widest mb-2 font-semibold">Monthly Prize Pool</p>
-              <p className="text-2xl font-display font-semibold text-[var(--color-accent)]">₹10,50,000</p>
-              <p className="text-xs text-[var(--color-primary)] mt-1.5 font-medium">↑ 18% month-on-month</p>
+              <p className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-widest mb-2 font-semibold">April Draw Pool</p>
+              <p className="text-2xl font-display font-semibold text-amber-400">₹10,50,000</p>
+              <p className="text-xs text-[#06b6d4] mt-1.5 font-medium">↑ 18% month-on-month</p>
             </div>
             <div className="premium-card p-5">
               <p className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-widest mb-2 font-semibold">Charity Impact</p>
@@ -61,8 +61,8 @@ export default function LoginPage() {
       </div>
 
       <div className="flex flex-1 flex-col items-center justify-center p-8 relative z-10">
-        <Link href="/" className="flex lg:hidden items-center gap-3 mb-10">
-          <Hexagon className="h-6 w-6 text-[var(--color-primary)] stroke-[1.5]" />
+        <Link href="/" className="flex lg:hidden items-center gap-3 mb-10 group">
+          <Hexagon className="h-6 w-6 text-[#06b6d4] stroke-[1.5] group-hover:rotate-12 transition-transform duration-500" />
           <span className="font-display font-medium text-lg text-white">Digital Heroes</span>
         </Link>
 
@@ -73,18 +73,18 @@ export default function LoginPage() {
           className="w-full max-w-md"
         >
           <div className="mb-8">
-            <h1 className="text-3xl font-display font-medium text-white mb-2 tracking-tight">Welcome back</h1>
-            <p className="text-[var(--color-text-secondary)] font-light">Sign in to your player account.</p>
+            <h1 className="text-3xl font-display font-medium text-white mb-2 tracking-tight">Mission Control</h1>
+            <p className="text-[var(--color-text-secondary)] font-light">Sign in to initialize your session.</p>
           </div>
 
-          <div className="mb-6 p-4 rounded-xl bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/20">
-            <p className="text-xs font-semibold text-[var(--color-primary)] uppercase tracking-widest mb-2 flex items-center gap-2">
-              <Shield className="w-3 h-3" /> Review Credentials
+          <div className="mb-6 p-4 rounded-xl bg-[#06b6d4]/5 border border-[#06b6d4]/20">
+            <p className="text-xs font-semibold text-[#06b6d4] uppercase tracking-widest mb-3 flex items-center gap-2">
+              <Shield className="w-3.5 h-3.5" /> Evaluator Credentials
             </p>
-            <div className="space-y-1 text-xs text-[var(--color-text-secondary)] font-mono">
-              <p>User: <span className="text-white">user@test.com</span></p>
-              <p>Admin: <span className="text-white">admin@test.com</span></p>
-              <p>Password: <span className="text-white">test1234</span></p>
+            <div className="space-y-1.5 text-[11px] text-[var(--color-text-secondary)] font-mono">
+              <p className="flex justify-between border-b border-white/5 pb-1"><span>Admin:</span> <span className="text-white bg-white/5 px-1.5 rounded">admin@test.com / Admin@1234</span></p>
+              <p className="flex justify-between border-b border-white/5 pb-1 pt-1"><span>User:</span> <span className="text-white bg-white/5 px-1.5 rounded">user@test.com / Test@1234</span></p>
+              <p className="flex justify-between pt-1"><span>Auditor:</span> <span className="text-white bg-white/5 px-1.5 rounded">auditor@test.com / Audit@1234</span></p>
             </div>
           </div>
 
@@ -118,19 +118,19 @@ export default function LoginPage() {
 
             <Button
               type="submit" disabled={loading}
-              className="w-full h-12 mt-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold text-sm rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.35)] transition-all duration-300"
+              className="w-full h-12 mt-2 bg-[#06b6d4] hover:bg-[#0891b2] text-gray-900 font-semibold text-sm rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.2)] hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-300"
             >
               {loading ? (
-                <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Signing you in...</>
+                <><Loader2 className="w-4 h-4 mr-2 animate-spin text-gray-900" /> Authenticating...</>
               ) : (
-                <>Sign In <ArrowRight className="w-4 h-4 ml-2" /></>
+                <>Launch Session <ArrowRight className="w-4 h-4 ml-2" /></>
               )}
             </Button>
           </form>
 
           <p className="mt-8 text-center text-sm text-[var(--color-text-secondary)] font-light">
             New to Digital Heroes?{" "}
-            <Link href="/signup" className="text-[var(--color-primary)] font-semibold hover:underline underline-offset-2">
+            <Link href="/signup" className="text-[#06b6d4] font-semibold hover:underline underline-offset-2">
               Create an account
             </Link>
           </p>
