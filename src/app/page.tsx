@@ -2,160 +2,281 @@
 
 import { Navbar } from '@/components/layout/Navbar'
 import { Button } from '@/components/ui/button'
-import { motion } from 'framer-motion'
-import { ArrowRight, Heart, Trophy, TrendingUp, Users, ShieldCheck, ChevronRight } from 'lucide-react'
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
+import { ArrowRight, Heart, Trophy, TrendingUp, Users, ShieldCheck, ChevronRight, Zap, Globe, Lock, Star } from 'lucide-react'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
+function CountUp({ end, suffix = "" }: { end: number; suffix?: string }) {
+  const [val, setVal] = useState(0)
+  useEffect(() => {
+    let start = 0
+    const step = end / 60
+    const timer = setInterval(() => {
+      start += step
+      if (start >= end) { setVal(end); clearInterval(timer) }
+      else setVal(Math.floor(start))
+    }, 16)
+    return () => clearInterval(timer)
+  }, [end])
+  return <>{val.toLocaleString()}{suffix}</>
+}
 
 const FEATURES = [
   {
     icon: Trophy,
-    color: "from-[var(--color-accent)]/20 to-transparent",
-    iconColor: "text-[var(--color-accent)]",
-    border: "border-[var(--color-accent)]/20",
+    gradient: "from-amber-500/20 via-amber-500/5 to-transparent",
+    iconBg: "bg-amber-500/10 border-amber-500/20",
+    iconColor: "text-amber-400",
+    tag: "Draw Engine",
     title: "Premium Prize Pools",
-    description: "Every verified 5-score submission enters the monthly draw. High-stakes rewards tied directly to your performance.",
+    description: "Every verified 5-score submission enters the monthly draw. Algorithm-powered or randomised — high-stakes rewards tied directly to your performance.",
+    metric: "₹10.5L", metricLabel: "April Pool"
   },
   {
     icon: TrendingUp,
-    color: "from-[var(--color-primary)]/20 to-transparent",
-    iconColor: "text-[var(--color-primary)]",
-    border: "border-[var(--color-primary)]/20",
-    title: "Performance Analytics",
-    description: "Institutional-grade tracking for your handicap. Our rolling 5-score logic ensures your index is always current.",
+    gradient: "from-emerald-500/20 via-emerald-500/5 to-transparent",
+    iconBg: "bg-emerald-500/10 border-emerald-500/20",
+    iconColor: "text-emerald-400",
+    tag: "Stableford Tracking",
+    title: "Precision Analytics",
+    description: "Rolling 5-score buffer. One entry per date. Validated 1–45 Stableford range. Your index is always accurate and competition-grade.",
+    metric: "5", metricLabel: "Score Buffer"
   },
   {
     icon: Heart,
-    color: "from-white/10 to-transparent",
-    iconColor: "text-white",
-    border: "border-white/10",
+    gradient: "from-pink-500/20 via-pink-500/5 to-transparent",
+    iconBg: "bg-pink-500/10 border-pink-500/20",
+    iconColor: "text-pink-400",
+    tag: "ESG Giving",
     title: "Automated Impact",
-    description: "Direct a percentage of your subscription to verified partners. Build your philanthropic legacy passively.",
+    description: "Route 10%–100% of your subscription to verified charities. Four active partners, transparent fund tracking, live allocation slider.",
+    metric: "₹11.9L", metricLabel: "Deployed"
   },
 ]
 
+const HOW_IT_WORKS = [
+  { step: "01", icon: Lock, label: "Subscribe", text: "Choose Hobbyist (₹749/mo) or Digital Hero (₹1,999/mo). PayPal secure billing." },
+  { step: "02", icon: TrendingUp, label: "Track Scores", text: "Log your Stableford scores daily. System maintains your rolling 5-score index." },
+  { step: "03", icon: Zap, label: "Enter Draw", text: "Each month, eligible players enter the automated prize draw engine automatically." },
+  { step: "04", icon: Heart, label: "Fund Impact", text: "Your contribution % flows to your chosen charity partner. Transparent ledger." },
+]
+
 const STATS = [
-  { label: "Active Members", value: "1,200+", icon: Users },
-  { label: "Total Distributed", value: "₹38L+", icon: Trophy },
-  { label: "Impact Deployed", value: "₹10L+", icon: Heart },
-  { label: "Draws Finalized", value: "18", icon: ShieldCheck },
+  { label: "Active Members", value: 1200, suffix: "+", icon: Users, color: "text-amber-400" },
+  { label: "Total Distributed", value: 38, suffix: "L+", prefix: "₹", icon: Trophy, color: "text-emerald-400" },
+  { label: "Impact Deployed", value: 10, suffix: "L+", prefix: "₹", icon: Heart, color: "text-pink-400" },
+  { label: "Draws Completed", value: 18, suffix: "", icon: ShieldCheck, color: "text-blue-400" },
+]
+
+const TICKER_ITEMS = [
+  "✦ April Draw Pool: ₹10,50,000",
+  "✦ Sarah Jenkins — Class A Winner ₹4,20,000",
+  "✦ Ocean Cleanup Foundation — ₹11.9L deployed",
+  "✦ Next Draw: 01 May 2026",
+  "✦ 1,287 Active Subscribers",
+  "✦ Education For All — ₹5.1L deployed",
+  "✦ Draw Mode: Algorithmic",
 ]
 
 export default function Home() {
   return (
-    <div className="bg-[var(--color-background)] min-h-screen">
+    <div className="bg-[var(--color-background)] min-h-screen overflow-x-hidden">
       <Navbar />
-      <main className="relative z-10">
-        <section className="relative px-6 pt-24 pb-32 overflow-hidden min-h-[90vh] flex flex-col justify-center">
+
+      {/* Live Ticker */}
+      <div className="fixed top-0 left-0 right-0 z-50 h-8 bg-[var(--color-accent)]/90 backdrop-blur-sm flex items-center overflow-hidden">
+        <div className="flex whitespace-nowrap animate-[ticker_40s_linear_infinite]">
+          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+            <span key={i} className="text-gray-900 text-[11px] font-semibold px-8">{item}</span>
+          ))}
+        </div>
+      </div>
+
+      <main className="relative z-10 pt-8">
+        {/* Hero */}
+        <section className="relative px-6 pt-28 pb-32 overflow-hidden min-h-[95vh] flex flex-col justify-center">
+          {/* Grid background */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute left-0 top-0 w-[50%] h-full bg-[radial-gradient(circle_at_20%_30%,var(--color-accent)_0%,transparent_50%)] opacity-[0.03]" />
-            <div className="absolute right-0 top-0 w-[50%] h-full bg-[radial-gradient(circle_at_80%_60%,var(--color-primary)_0%,transparent_50%)] opacity-[0.05]" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:60px_60px]" />
+            <div className="absolute left-1/4 top-1/4 w-96 h-96 bg-[var(--color-accent)] rounded-full blur-[180px] opacity-[0.04]" />
+            <div className="absolute right-1/4 bottom-1/4 w-96 h-96 bg-[var(--color-primary)] rounded-full blur-[180px] opacity-[0.06]" />
           </div>
 
           <div className="max-w-7xl mx-auto w-full relative z-10">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
-              <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="text-left">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--color-border)] bg-white/[0.02] mb-8">
-                  <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-                  <span className="text-xs font-medium text-[var(--color-text-secondary)] tracking-wide uppercase">The Digital Hero Program</span>
-                </div>
-                <h1 className="heading-hero text-6xl md:text-8xl mb-6">
-                  Play for <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-[#fcd34d]">The Win.</span>
-                </h1>
-                <p className="text-lg text-[var(--color-text-secondary)] max-w-md font-light leading-relaxed">
-                  Log your scores. Compete in high-stakes monthly draws. Experience the definitive performance engine for modern golfers.
-                </p>
-              </motion.div>
+            {/* Badge */}
+            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-center mb-10">
+              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5">
+                <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+                <span className="text-xs font-semibold text-[var(--color-accent)] tracking-widest uppercase">April Draw Live — ₹10,50,000 Pool</span>
+              </div>
+            </motion.div>
 
-              <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="lg:text-right border-l lg:border-l-0 lg:border-r border-[var(--color-border)] pl-8 lg:pl-0 lg:pr-8">
-                <h1 className="heading-hero text-6xl md:text-8xl mb-6">
-                  Play for <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-l from-[var(--color-primary)] to-[#34d399]">Impact.</span>
-                </h1>
-                <p className="text-lg text-[var(--color-text-secondary)] max-w-md font-light leading-relaxed lg:ml-auto">
-                  Automatically route a portion of your subscription to verified ESG portfolios. Your game funds real-world change.
-                </p>
-              </motion.div>
-            </div>
+            {/* Headline */}
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8 }} className="text-center mb-8">
+              <h1 className="font-display font-medium tracking-tight leading-[0.9]">
+                <span className="block text-[clamp(52px,9vw,110px)] text-white">Play for</span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] via-yellow-300 to-[var(--color-accent)]">The Win.</span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-emerald-300">Fund Change.</span>
+              </h1>
+            </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }} className="mt-20 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-center text-xl text-[var(--color-text-secondary)] font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+              The world's first golf platform that turns your scores into prize winnings <em>and</em> charitable impact — every single month.
+            </motion.p>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
               <Link href="/signup">
-                <Button className="h-14 px-10 text-sm font-semibold rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 hover:scale-105 active:scale-95 group">
-                  Initialize Portfolio <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <Button className="h-14 px-12 text-base font-semibold rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-amber-400 text-gray-900 hover:opacity-90 shadow-[0_0_40px_rgba(245,158,11,0.25)] transition-all duration-300 hover:scale-105 active:scale-95 group">
+                  Start for ₹749/mo <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/how-it-works">
-                <Button variant="outline" className="h-14 px-10 text-sm font-medium rounded-xl border-[var(--color-border-strong)] bg-white/[0.02] text-white hover:bg-white/[0.06] transition-all duration-300">
-                  View Methodology
+                <Button variant="outline" className="h-14 px-10 text-sm font-medium rounded-xl border-white/10 bg-white/[0.03] text-white hover:bg-white/[0.07] transition-all duration-300">
+                  See How It Works
                 </Button>
               </Link>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.8 }} className="mt-24 pt-10 border-t border-[var(--color-border)] grid grid-cols-2 md:grid-cols-4 gap-8">
+            {/* Stats */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/[0.06]">
               {STATS.map((stat, i) => (
-                <div key={i} className="text-center">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <stat.icon className={`w-4 h-4 ${i % 2 === 0 ? 'text-[var(--color-accent)]' : 'text-[var(--color-primary)]'}`} />
-                    <span className="text-2xl md:text-3xl font-display font-medium text-white">{stat.value}</span>
-                  </div>
-                  <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider font-medium">{stat.label}</span>
+                <div key={i} className="bg-[var(--color-background)] px-6 py-8 text-center group hover:bg-white/[0.02] transition-colors">
+                  <stat.icon className={`w-5 h-5 mx-auto mb-3 ${stat.color}`} />
+                  <p className={`text-3xl font-display font-semibold mb-1 ${stat.color}`}>
+                    {stat.prefix || ""}<CountUp end={stat.value} suffix={stat.suffix} />
+                  </p>
+                  <p className="text-[11px] text-[var(--color-text-muted)] uppercase tracking-wider font-semibold">{stat.label}</p>
                 </div>
               ))}
             </motion.div>
           </div>
         </section>
 
-        <section className="py-24 relative px-6 bg-white/[0.01] border-y border-[var(--color-border)]">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <p className="text-xs font-semibold text-[var(--color-primary)] uppercase tracking-widest mb-3">Core Infrastructure</p>
-              <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight">Institutional grade mechanics.</h2>
+        {/* How It Works */}
+        <section className="py-24 px-6 border-t border-[var(--color-border)] bg-white/[0.01]">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-xs font-semibold text-[var(--color-primary)] uppercase tracking-widest mb-3">Simple by Design</p>
+              <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight">How it works.</h2>
             </div>
-            <div className="grid lg:grid-cols-3 gap-6">
-              {FEATURES.map((f, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ delay: i * 0.1, duration: 0.6 }}
-                  className={`premium-card p-10 ${f.border} group relative`}
-                >
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${f.color} border ${f.border} flex items-center justify-center mb-8 relative z-10 transition-transform duration-500 group-hover:scale-110`}>
-                    <f.icon className={`w-6 h-6 ${f.iconColor}`} />
+            <div className="grid md:grid-cols-4 gap-4 relative">
+              <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              {HOW_IT_WORKS.map((item, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }} className="relative">
+                  <div className="premium-card p-6 text-center group hover:border-[var(--color-primary)]/30 transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <item.icon className="w-5 h-5 text-[var(--color-primary)]" />
+                    </div>
+                    <span className="text-[10px] font-bold text-[var(--color-primary)] tracking-widest uppercase block mb-2">{item.step}</span>
+                    <h3 className="font-display font-medium text-white text-base mb-2">{item.label}</h3>
+                    <p className="text-xs text-[var(--color-text-secondary)] font-light leading-relaxed">{item.text}</p>
                   </div>
-                  <h3 className="text-xl font-display font-medium text-white mb-3 tracking-tight">{f.title}</h3>
-                  <p className="text-[var(--color-text-secondary)] text-sm font-light leading-relaxed">{f.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* Features */}
+        <section className="py-24 px-6 border-t border-[var(--color-border)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="text-xs font-semibold text-[var(--color-accent)] uppercase tracking-widest mb-3">Core Infrastructure</p>
+              <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight">Institutional grade mechanics.</h2>
+            </div>
+            <div className="grid lg:grid-cols-3 gap-6">
+              {FEATURES.map((f, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ delay: i * 0.1, duration: 0.6 }} className={`premium-card p-10 group relative overflow-hidden`}>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${f.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  <div className="relative z-10">
+                    <div className="flex items-start justify-between mb-8">
+                      <div className={`w-14 h-14 rounded-xl ${f.iconBg} border flex items-center justify-center transition-transform duration-500 group-hover:scale-110`}>
+                        <f.icon className={`w-6 h-6 ${f.iconColor}`} />
+                      </div>
+                      <span className={`text-[10px] font-bold uppercase tracking-widest ${f.iconColor} bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded-lg`}>{f.tag}</span>
+                    </div>
+                    <h3 className="text-xl font-display font-medium text-white mb-3 tracking-tight">{f.title}</h3>
+                    <p className="text-[var(--color-text-secondary)] text-sm font-light leading-relaxed mb-8">{f.description}</p>
+                    <div className="pt-5 border-t border-white/[0.05] flex items-end justify-between">
+                      <div>
+                        <p className="text-2xl font-display font-semibold text-white">{f.metric}</p>
+                        <p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider font-semibold mt-0.5">{f.metricLabel}</p>
+                      </div>
+                      <Star className={`w-4 h-4 ${f.iconColor} opacity-40`} />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Charity of the Month Spotlight */}
+        <section className="py-20 px-6 border-t border-[var(--color-border)] bg-white/[0.01]">
+          <div className="max-w-5xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="premium-card p-10 md:p-14 border-pink-500/20 relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,rgba(236,72,153,0.08),transparent_60%)] pointer-events-none" />
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                <div className="flex-shrink-0">
+                  <div className="w-20 h-20 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center">
+                    <Globe className="w-9 h-9 text-pink-400" />
+                  </div>
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <span className="text-[10px] font-bold text-pink-400 uppercase tracking-widest block mb-2">🌟 Charity of the Month — April 2026</span>
+                  <h3 className="text-2xl font-display font-medium text-white mb-2">Ocean Cleanup Foundation</h3>
+                  <p className="text-[var(--color-text-secondary)] text-sm font-light leading-relaxed max-w-lg">Engineering scalable systems to extract plastic from the world's oceans. This month's top-allocated partner with ₹11,92,000 deployed from member contributions.</p>
+                  <div className="flex items-center gap-6 mt-4 justify-center md:justify-start">
+                    <div><p className="text-xl font-display font-semibold text-pink-400">₹11.9L</p><p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">Deployed</p></div>
+                    <div><p className="text-xl font-display font-semibold text-white">481</p><p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">Members</p></div>
+                    <div><p className="text-xl font-display font-semibold text-white">Global</p><p className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">Reach</p></div>
+                  </div>
+                </div>
+                <Link href="/charities">
+                  <Button className="shrink-0 h-12 px-8 bg-pink-500/10 border border-pink-500/20 text-pink-400 hover:bg-pink-500/20 rounded-xl font-semibold text-sm transition-all">
+                    All Partners <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* CTA */}
         <section className="py-32 px-6">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center premium-card p-16 md:p-24 border-[var(--color-primary)]/20 relative"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.1)_0%,transparent_60%)] pointer-events-none" />
+          <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto text-center premium-card p-16 md:p-24 border-[var(--color-primary)]/20 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(16,185,129,0.12)_0%,transparent_60%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
             <div className="relative z-10">
-              <div className="w-16 h-16 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/20 flex items-center justify-center mx-auto mb-8 glow-emerald">
+              <div className="w-16 h-16 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/20 flex items-center justify-center mx-auto mb-8">
                 <Heart className="w-7 h-7 text-[var(--color-primary)] fill-[var(--color-primary)]" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight mb-6">Redefine your legacy.</h2>
+              <h2 className="text-4xl md:text-6xl font-display font-medium text-white tracking-tight mb-6">Redefine your legacy.</h2>
               <p className="text-[var(--color-text-secondary)] text-lg mb-10 max-w-md mx-auto font-light">₹749/month. No lock-in. Cancel anytime. The platform that rewards performance while funding global change.</p>
-              <Link href="/signup">
-                <Button className="h-14 px-12 text-sm font-semibold rounded-xl bg-white text-[#020617] hover:bg-gray-200 transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                  Create Your Account <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link href="/signup">
+                  <Button className="h-14 px-12 text-base font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-emerald-400 text-gray-900 hover:opacity-90 transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(16,185,129,0.2)]">
+                    Create Your Account <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+                <Link href="/auditor">
+                  <Button variant="outline" className="h-14 px-8 text-sm font-medium rounded-xl border-white/10 bg-white/[0.02] text-white hover:bg-white/[0.06]">
+                    View Transparency Portal
+                  </Button>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </section>
       </main>
+
+      <style jsx global>{`
+        @keyframes ticker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </div>
   )
 }
