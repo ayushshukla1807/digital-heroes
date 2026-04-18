@@ -4,6 +4,7 @@ import './globals.css'
 import { Toaster } from '@/components/ui/toaster'
 import { SiteFooter } from '@/components/layout/Footer'
 import { EvalAccessPanel } from '@/components/layout/EvalAccessPanel'
+import { MouseGlow } from '@/components/layout/MouseGlow'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         </div>
         <SiteFooter />
         <EvalAccessPanel />
+        <MouseGlow />
         <Toaster />
       </body>
     </html>
