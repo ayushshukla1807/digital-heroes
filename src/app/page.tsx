@@ -3,6 +3,8 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Button } from '@/components/ui/button'
 import { MagneticButton } from '@/components/ui/MagneticButton'
+import { Typewriter } from '@/components/ui/Typewriter'
+import { Marquee } from '@/components/ui/Marquee'
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
 import { ArrowRight, Heart, Trophy, TrendingUp, Users, ShieldCheck, ChevronRight, Zap, Globe, Lock, Star } from 'lucide-react'
 import Link from 'next/link'
@@ -116,9 +118,9 @@ export default function Home() {
             {/* Headline */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8 }} className="text-center mb-8">
               <h1 className="font-display font-semibold tracking-tight leading-[0.9]">
-                <span className="block text-[clamp(52px,9vw,110px)] text-white">Launching</span>
-                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-cyan-300 to-[var(--color-primary)]">Your Game.</span>
-                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-amber-300">Into Orbit.</span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-white"><Typewriter text="Launching" delay={0.2} /></span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-cyan-300 to-[var(--color-primary)]"><Typewriter text="Your Game." delay={0.5} /></span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-amber-300"><Typewriter text="Into Orbit." delay={0.8} /></span>
               </h1>
             </motion.div>
 
@@ -137,6 +139,29 @@ export default function Home() {
                   See How It Works
                 </Button>
               </Link>
+            </motion.div>
+
+            {/* Impact Partners Marquee */}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 1 }} className="mt-12 mb-20 border-y border-white/5 bg-[#06b6d4]/[0.02] py-8 relative">
+              <div className="text-center mb-6">
+                <p className="text-[10px] font-semibold text-[#06b6d4] uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                  <Heart className="w-3 h-3" /> Certified Impact Partners
+                </p>
+              </div>
+              <Marquee speed={30}>
+                {[
+                  { n: "Global Water Initiative", c: "#10b981" },
+                  { n: "Ocean Cleanup Foundation", c: "#0ea5e9" },
+                  { n: "Education For All", c: "#f59e0b" },
+                  { n: "Reforestation Trust", c: "#22c55e" },
+                  { n: "Medical Relief Int.", c: "#ec4899" },
+                ].map((p, i) => (
+                  <div key={i} className="flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 bg-white/5">
+                    <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: p.c }} />
+                    <span className="text-sm font-medium text-[var(--color-text-secondary)]">{p.n}</span>
+                  </div>
+                ))}
+              </Marquee>
             </motion.div>
 
             {/* Stats */}
