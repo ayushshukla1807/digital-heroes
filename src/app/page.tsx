@@ -106,29 +106,29 @@ export default function Home() {
           <div className="max-w-7xl mx-auto w-full relative z-10">
             {/* Badge */}
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-center mb-10">
-              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-                <span className="text-xs font-semibold text-[var(--color-accent)] tracking-widest uppercase">April Draw Live — ₹10,50,000 Pool</span>
+              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#06b6d4]/30 bg-[#06b6d4]/5">
+                <span className="w-2 h-2 rounded-full bg-[#06b6d4] animate-pulse" />
+                <span className="text-xs font-semibold text-[#06b6d4] tracking-widest uppercase">April Draw Live — ₹10,50,000 Pool</span>
               </div>
             </motion.div>
 
             {/* Headline */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.8 }} className="text-center mb-8">
-              <h1 className="font-display font-medium tracking-tight leading-[0.9]">
-                <span className="block text-[clamp(52px,9vw,110px)] text-white">Play for</span>
-                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] via-yellow-300 to-[var(--color-accent)]">The Win.</span>
-                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-emerald-300">Fund Change.</span>
+              <h1 className="font-display font-semibold tracking-tight leading-[0.9]">
+                <span className="block text-[clamp(52px,9vw,110px)] text-white">Launching</span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[#06b6d4] via-cyan-300 to-[var(--color-primary)]">Your Game.</span>
+                <span className="block text-[clamp(52px,9vw,110px)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-amber-300">Into Orbit.</span>
               </h1>
             </motion.div>
 
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-center text-xl text-[var(--color-text-secondary)] font-light max-w-2xl mx-auto mb-12 leading-relaxed">
-              The world's first golf platform that turns your scores into prize winnings <em>and</em> charitable impact — every single month.
+              The golf platform engineered to launch your scores into prize orbit — and your subscription into charitable impact. Every single month.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
               <Link href="/signup">
-                <Button className="h-14 px-12 text-base font-semibold rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-amber-400 text-gray-900 hover:opacity-90 shadow-[0_0_40px_rgba(245,158,11,0.25)] transition-all duration-300 hover:scale-105 active:scale-95 group">
-                  Start for ₹749/mo <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Button className="h-14 px-12 text-base font-semibold rounded-xl bg-[#06b6d4] hover:bg-[#0891b2] text-gray-900 shadow-[0_0_40px_rgba(6,182,212,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 group">
+                  Launch Your Game <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/how-it-works">
@@ -139,7 +139,7 @@ export default function Home() {
             </motion.div>
 
             {/* Stats */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/[0.06]">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#06b6d4]/10 rounded-2xl overflow-hidden border border-[#06b6d4]/10">
               {STATS.map((stat, i) => (
                 <div key={i} className="bg-[var(--color-background)] px-6 py-8 text-center group hover:bg-white/[0.02] transition-colors">
                   <stat.icon className={`w-5 h-5 mx-auto mb-3 ${stat.color}`} />
