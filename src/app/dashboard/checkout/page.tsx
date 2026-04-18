@@ -1,4 +1,5 @@
 "use client"
+import { TiltCard } from "@/components/ui/TiltCard";
 
 import { useState } from "react"
 import { motion } from "framer-motion"
@@ -132,17 +133,16 @@ export default function CheckoutPage() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {PLANS.map((plan) => (
-              <motion.div
-                key={plan.id}
-                whileHover={{ y: -4 }}
-                onClick={() => setSelectedPlan(plan.id as PlanId)}
-                className={`relative rounded-2xl cursor-pointer overflow-hidden border-2 transition-all ${
-                  selectedPlan === plan.id
-                    ? "border-[var(--color-primary)] bg-[rgba(16,185,129,0.05)] shadow-[0_0_30px_-5px_rgba(16,185,129,0.2)]"
-                    : "border-[var(--color-border)] bg-white/[0.02] hover:border-white/10"
-                }`}
-              >
-                {plan.popular && (
+              <TiltCard key={plan.id}>
+                <div
+                  onClick={() => setSelectedPlan(plan.id as PlanId)}
+                  className={`h-full relative rounded-2xl cursor-pointer overflow-hidden border-2 transition-all ${
+                    selectedPlan === plan.id
+                      ? "border-[#06b6d4] bg-[#06b6d4]/[0.05] shadow-[0_0_30px_-5px_rgba(6,182,212,0.3)]"
+                      : "border-[var(--color-border)] bg-white/[0.02] hover:border-white/10"
+                  }`}
+                >
+                  {plan.popular && (
                   <div className="absolute top-0 right-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] text-xs font-bold px-3 py-1 text-gray-900 rounded-bl-xl">
                     MOST POPULAR
                   </div>
@@ -167,7 +167,8 @@ export default function CheckoutPage() {
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+                </div>
+              </TiltCard>
             ))}
           </div>
         </div>
