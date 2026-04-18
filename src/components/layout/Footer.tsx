@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Trophy, Heart, Globe, ShieldCheck, Zap, Database, CreditCard, Code2 } from "lucide-react"
+import { ShieldCheck, Zap, Database, CreditCard, Code2, MapPin } from "lucide-react"
 
 function Countdown() {
   const [time, setTime] = useState({ d: 0, h: 0, m: 0, s: 0 })
@@ -122,6 +122,11 @@ export function SiteFooter() {
                 <p className="text-[10px] text-white/30 font-medium uppercase tracking-wider">Built by</p>
                 <p className="text-sm font-display font-semibold text-white mt-0.5">Ayush Shukla</p>
                 <p className="text-[10px] text-[#06b6d4] font-medium">Full Stack Intern Candidate</p>
+                <div className="flex items-center gap-1 mt-1.5">
+                  <MapPin className="w-3 h-3 text-amber-400" />
+                  <span className="text-[10px] text-amber-400 font-semibold">Lucknow, UP</span>
+                  <span className="text-[10px] text-white/20 font-medium">· Same city, same mission</span>
+                </div>
               </div>
               <div>
                 <p className="text-[10px] text-white/30 font-medium uppercase tracking-wider">Stack</p>

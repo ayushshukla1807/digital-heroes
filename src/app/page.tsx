@@ -212,6 +212,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Lucknow Local Pride */}
+        <section className="py-14 px-6 border-t border-[var(--color-border)]">
+          <div className="max-w-5xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative overflow-hidden rounded-2xl border border-amber-500/15 bg-gradient-to-r from-amber-500/[0.04] via-transparent to-[#06b6d4]/[0.04] px-8 py-6 md:px-12 md:py-8">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_50%,rgba(245,158,11,0.06),transparent_50%)] pointer-events-none" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_50%,rgba(6,182,212,0.06),transparent_50%)] pointer-events-none" />
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+                <div className="flex-shrink-0 text-center">
+                  <div className="text-5xl mb-2">🏙️</div>
+                  <p className="text-[10px] font-bold text-amber-400 uppercase tracking-widest">Local Pride</p>
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-xl md:text-2xl font-display font-semibold text-white mb-2">
+                    Built in <span className="text-amber-400">Lucknow</span> · For a{" "}
+                    <span className="text-[#06b6d4]">Lucknow-born</span> company.
+                  </h3>
+                  <p className="text-sm text-white/50 font-light leading-relaxed max-w-xl">
+                    Digital Heroes was founded in Lucknow, Uttar Pradesh in 2017. This platform was engineered by a candidate from the same city — a shared heritage of ambition, precision, and impact.
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-1 flex-shrink-0">
+                  <div className="px-4 py-2 rounded-xl border border-amber-500/20 bg-amber-500/5">
+                    <p className="text-[11px] font-bold text-amber-400 uppercase tracking-widest text-center">📍 Lucknow, UP</p>
+                    <p className="text-[10px] text-white/30 text-center mt-0.5">26.8467° N, 80.9462° E</p>
+                  </div>
+                  <p className="text-[9px] text-white/20 font-medium uppercase tracking-wider">Headquarters · Home City</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Charity of the Month Spotlight */}
         <section className="py-20 px-6 border-t border-[var(--color-border)] bg-white/[0.01]">
           <div className="max-w-5xl mx-auto">
